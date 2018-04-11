@@ -1,9 +1,10 @@
 .root {
   background-color: rgb(210, 210, 210);
   text-align: center;
-  margin-bottom: 80px;
+  border-radius: 5px;
 }
 
 .text {
   color: rgb(20, 20, 20);
+  padding: 10px;
 }
