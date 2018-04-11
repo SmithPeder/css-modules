@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Header from './components/common/Header';
+import Footer from './components/common/Footer';
 
 const App = () => {
-  const title = 'Coin';
   return (
     <div>
       <Header />
-      <h1>{title}</h1>
-      <p>description</p>
+      <Footer />
     </div>
   );
 };
