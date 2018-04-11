@@ -1,8 +1,48 @@
-# Css-modules boilerplate
+# CSS Modules quick start
 
-> Using css-modules with [webpack](http://webpack.github.io/) and [style-loader](https://github.com/webpack/style-loader)
+> Using [css-modules](https://github.com/css-modules/css-modules)
+with [webpack](http://webpack.github.io/) 
+and [style-loader](https://github.com/webpack/style-loader)
 
 ## Setup
+
+```zsh
+git clone git@github.com:SmithPeder/css-modules.git
+
+npm install
+
+npm start
+```
+
+## Description
+To get CSS Modules to work the [style-loader](https://github.com/webpack/style-loader) has to be added to your development dependencies.
+
+```js
+// package.json
+...
+"devDependencies": {
+    ...
+    style-loader: "^0.12.3",
+    ...
+}
+...
+```
+
+Then write a loader for `.css` files
+```js
+// webpack.config.js
+...
+{
+    test: /\.css$/,
+    loader:
+    'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+}
+...
+```
+
+The rest of the configurations in `package.json` and `webpack.config.js` are needed to get 
+boilerplate project to run, but are technically not needed for the CSS Modules.
+
 
 ## Result
 
