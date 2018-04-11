@@ -4,7 +4,7 @@ import styles from './Footer.css';
 class Footer extends Component {
   render() {
     return (
-      <div className={styles.background}>
+      <div className={styles.root}>
         <h1 className={styles.text}>Footer</h1>
       </div>
     );
