@@ -1,3 +1,7 @@
 .root {
   background-color: rgb(134, 226, 213);
 }
+
+.text {
+  color: red;
+}
