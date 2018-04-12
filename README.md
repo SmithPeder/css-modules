@@ -28,7 +28,7 @@ To get CSS Modules to work the [style-loader](https://github.com/webpack/style-l
 ...
 ```
 
-Then write a loader for `.css` files
+Then a loader needs to be added for handling `.css` files
 ```js
 // webpack.config.js
 ...
@@ -40,13 +40,23 @@ Then write a loader for `.css` files
 ...
 ```
 
-The rest of the configurations in `package.json` and `webpack.config.js` are needed to get 
+The rest of the configurations in `package.json` and `webpack.config.js` are needed to get the
 boilerplate project to run, but are technically not needed for the CSS Modules.
 
+After the dependencies and loader configuration is complete, you can import a style sheet in your `.js` file.
+```js
+import styles from './someFile.css';
+```
+Then use the style sheet the normal way by giving a element a className.
+```js
+<div className={styles.root}>
+```
+The power of the dependency is shown in the result section below. The CSS you write in that specific file is scoped
+and cannot be used by elements that don't import that specific file.
 
 ## Result
 
-> The loader adds a hash suffix after every classname
+> The loader adds a hash suffix after every classname as seen when inspection the webpage with chrome dev tool.
 ```html
 <div>
     <div class="Header__root___1bSWx">
@@ -60,6 +70,32 @@ boilerplate project to run, but are technically not needed for the CSS Modules.
     </div>
 </div>
 ```
-> The result is tree components that have the same classnames but different style
+> The result is six components that share classnames but have different style
 <img src="https://i.imgur.com/PRimUbx.png"/>
+
+## Extra
+
+The dependency brings a lot more then just scoping. You can also compose selectors.
+
+> From same file:
+```CSS
+.className {
+    color: green;
+    background: red;
+}
+
+.otherClassName {
+    composes: className;
+    color: yellow;
+}
+```
+> From another file:
+```CSS
+.otherClassName {
+    composes: className from "./style.css";
+}
+```
+Using compose selectors becomes critical if you want to reuse classes, and avoid duplicate code.
+Composing and more is described in more detail at the dependency repo [css-modules](https://github.com/css-modules/css-modules).
+
 
