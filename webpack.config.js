@@ -36,7 +36,7 @@ module.exports = {
     ]
   },
   devServer: {
-    port: 6677
+    port: 3000
   },
   plugins: [HtmlWebpackPluginConfig]
 };
